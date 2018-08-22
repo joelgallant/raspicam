@@ -21,7 +21,7 @@ if (NOT($ENV{CROSS_TRIPLE} MATCHES arm*))
   set(SOURCES_LIST ${SOURCES_LIST} src/private/fake_mmal_dependencies.cpp)
 endif()
 
-add_library(raspicam ${hdrs_base} ${SOURCES_LIST})
+add_library(raspicam STATIC ${hdrs_base} ${SOURCES_LIST})
 
 if ($ENV{CROSS_TRIPLE} MATCHES arm*)
   find_library(mmalcore_LIBS NAMES mmal_core PATHS /opt/vc/lib)
@@ -39,9 +39,11 @@ endif()
 
 find_package(OpenCV 3 REQUIRED core highgui)
 
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+
 include_directories(${OpenCV_INCLUDE_DIRS})
-add_library(raspicam_cv ${SOURCES_LIST} src/raspicam_cv.cpp src/raspicam_still_cv.cpp)
-target_link_libraries(raspicam_cv ${OpenCV_LIBS})
+add_library(raspicam_cv STATIC ${SOURCES_LIST} src/raspicam_cv.cpp src/raspicam_still_cv.cpp)
+target_link_libraries(raspicam_cv raspicam ${OpenCV_LIBS})
 
 if (HAS_PARENT)
   set(raspicam_cv_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src PARENT_SCOPE)

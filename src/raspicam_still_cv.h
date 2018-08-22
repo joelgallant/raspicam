@@ -36,10 +36,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ****************************************************************/
 #ifndef _RaspiCam_STILL_H
 #define _RaspiCam_STILL_H
-#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/highgui.hpp>
 #include "raspicamtypes.h"
 #include <cstdio>
-#include <opencv2/core/core.hpp>
+#include <opencv2/core.hpp>
 namespace raspicam {
 
     namespace _private{

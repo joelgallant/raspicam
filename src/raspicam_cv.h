@@ -37,8 +37,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #ifndef RaspiCam_CV_H
 #define RaspiCam_CV_H
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
 namespace raspicam {
 
     namespace _private{
@@ -88,9 +88,9 @@ namespace raspicam {
 
         double get ( int propId );
 
-        /**Sets a property in the VideoCapture. 
-	 * 
-	 * 
+        /**Sets a property in the VideoCapture.
+	 *
+	 *
 	 * Implemented properties:
 	 * cv::CAP_PROP_FRAME_WIDTH,cv::CAP_PROP_FRAME_HEIGHT,
 	 * cv::CAP_PROP_FORMAT: CV_8UC1 or CV_8UC3
@@ -106,39 +106,39 @@ namespace raspicam {
          */
 
         bool set ( int propId, double value );
-		
+
 		/** Sets the rotation
 		0: none
 		1: 90 degrees clockwise
 		2: 180 degrees
-		3: 270 degrees clockwise		
+		3: 270 degrees clockwise
 		*/
         void setRotation ( int nRotation );
-		
+
 		/** Sets the image effect. See RASPICAM_IMAGE_EFFECT enum. 19 values as of current implementation.
 		*/
         void setImageEffect ( int nEffect );
-		
+
 		/** Enable or disable video stabilization
 		*/
         void setVideoStabilization ( bool enable );
-		
+
 		/** Enable or disable horizontal flip
 		*/
 		void setHorizontalFlip ( bool enable );
-		
+
 		/** Enable or disable vertical flip
 		*/
 		void setVerticalFlip ( bool enable );
-		
+
 		/** Set exposure compensation. -10,10
 		*/
 		void setExposureCompensation( int value );
-		
+
 		/** Sets auto white balance. See RASPICAM_AWB enum. 9 values as of current implementation.
 		*/
         void setAWB ( int nEnumValue );
-		
+
 		/** Sets metering type. See RASPICAM_METERING enum. 4 values as of current implementation.
 		*/
 		void setMetering ( int nEnumValue );
